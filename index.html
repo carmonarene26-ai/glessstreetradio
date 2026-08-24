@@ -11,7 +11,7 @@
             padding: 0;
         }
         body {
-            background-color: #0b0c10;
+            background-color: #090a0f;
             color: #e0e0e0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
@@ -21,97 +21,118 @@
             align-items: center;
             padding: 20px;
         }
-        .container {
+        /* AUTHENTIC JUKEBOX CABINET STRUCTURE */
+        .jukebox-cabinet {
             width: 100%;
-            max-width: 600px;
-            text-align: center;
-            /* Vintage Jukebox Cabinet Styling */
-            background: linear-gradient(135deg, #2b170c 0%, #1a0f07 100%);
-            border: 6px solid #4a2814;
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 30px rgba(243, 156, 18, 0.1);
+            max-width: 440px;
+            background: linear-gradient(135deg, #3d2314 0%, #1c0f07 100%);
+            border: 8px solid #5c321b;
+            border-top-left-radius: 120px;
+            border-top-right-radius: 120px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            padding: 40px 25px 30px 25px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9), inset 0 0 40px rgba(0,0,0,0.6);
             margin-top: 20px;
+            position: relative;
+        }
+        /* Chrome Trim Pillars on Sides */
+        .jukebox-cabinet::before, .jukebox-cabinet::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            width: 10px;
+            background: linear-gradient(90deg, #888, #fff, #555);
+            border-radius: 5px;
+        }
+        .jukebox-cabinet::before { left: 4px; }
+        .jukebox-cabinet::after { right: 4px; }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
         }
         header h1 {
-            font-size: 2.4rem;
+            font-size: 1.8rem;
             font-weight: 800;
             letter-spacing: 2px;
             color: #f39c12;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
         header p {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             color: #d1d5db;
-            margin-bottom: 30px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
-        /* Jukebox Display Window */
-        .jukebox-window {
+
+        /* The Illuminated Bubble / Dial Window */
+        .dial-window {
             background: #111318;
             border: 4px solid #362215;
-            border-radius: 16px;
-            padding: 30px;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: inset 0 8px 25px rgba(0,0,0,0.9);
             margin-bottom: 25px;
-            box-shadow: inset 0 8px 20px rgba(0,0,0,0.9);
-            position: relative;
         }
-        /* Glowing Neon-Free Arch Accent */
-        .jukebox-arch {
-            width: 140px;
-            height: 140px;
-            background: radial-gradient(circle, #b84a23 0%, #4a1c0d 70%);
-            border: 4px solid #f39c12;
-            border-radius: 50%;
-            margin: 0 auto 20px auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 25px rgba(243, 156, 18, 0.3);
-        }
-        .arch-title {
-            font-size: 0.65rem;
-            font-weight: bold;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .track-info {
-            margin-bottom: 20px;
-        }
-        .track-title {
-            font-size: 1.2rem;
+        .dial-title {
+            font-size: 1.1rem;
             font-weight: 600;
             color: #ffffff;
             margin-bottom: 6px;
         }
-        .track-status {
-            font-size: 0.85rem;
+        .dial-status {
+            font-size: 0.8rem;
             color: #f39c12;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: bold;
+            margin-bottom: 15px;
         }
         audio {
             width: 100%;
-            margin-top: 10px;
             accent-color: #f39c12;
         }
+
+        /* Speaker Grill Section at Bottom of Jukebox */
+        .speaker-grill {
+            background: #15100d;
+            border: 3px solid #2d1a10;
+            border-radius: 8px;
+            height: 70px;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 4px, #26170e 4px, #26170e 8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.8);
+        }
+        .speaker-badge {
+            font-size: 0.65rem;
+            color: #886045;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            background: #0d0a08;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid #3d2314;
+        }
+
         .nav-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 25px;
-            font-size: 0.9rem;
+            gap: 20px;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
         .nav-links a {
-            color: #b0b8c4;
+            color: #a0a8b4;
             text-decoration: none;
             transition: color 0.2s;
         }
@@ -119,9 +140,9 @@
             color: #f39c12;
         }
         footer {
-            margin-top: 30px;
-            font-size: 0.75rem;
-            color: #888;
+            margin-top: 25px;
+            font-size: 0.7rem;
+            color: #777;
             text-align: center;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -130,26 +151,23 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="jukebox-cabinet">
         <header>
             <h1>Gless Street Radio</h1>
             <p>High-Fidelity Analog Sound & Timeless Soul</p>
         </header>
 
-        <div class="jukebox-window">
-            <div class="jukebox-arch">
-                <span class="arch-title">GSR Cabinet</span>
-            </div>
-
-            <div class="track-info">
-                <div class="track-title">Analog Studio Master Feed</div>
-                <div class="track-status">Needle Dropping Soon</div>
-            </div>
-            
+        <div class="dial-window">
+            <div class="dial-title">Analog Studio Master Feed</div>
+            <div class="dial-status">Needle Dropping Soon</div>
             <audio controls>
                 <source src="" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
+        </div>
+
+        <div class="speaker-grill">
+            <div class="speaker-badge">GSR High-Fidelity</div>
         </div>
 
         <div class="nav-links">
