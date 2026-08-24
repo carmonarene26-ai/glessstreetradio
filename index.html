@@ -11,7 +11,7 @@
             padding: 0;
         }
         body {
-            background-color: #0d0f12;
+            background-color: #0b0c10;
             color: #e0e0e0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
@@ -23,105 +23,77 @@
         }
         .container {
             width: 100%;
-            max-width: 650px;
+            max-width: 600px;
             text-align: center;
-            background: #161920;
-            border: 2px solid #2d323d;
-            border-radius: 16px;
+            /* Vintage Jukebox Cabinet Styling */
+            background: linear-gradient(135deg, #2b170c 0%, #1a0f07 100%);
+            border: 6px solid #4a2814;
+            border-radius: 24px;
             padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
-            margin-top: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 30px rgba(243, 156, 18, 0.1);
+            margin-top: 20px;
         }
         header h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 2.4rem;
+            font-weight: 800;
             letter-spacing: 2px;
-            color: #ffffff;
+            color: #f39c12;
             margin-bottom: 6px;
             text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
         }
         header p {
-            font-size: 0.95rem;
-            color: #a0a6b0;
+            font-size: 0.9rem;
+            color: #d1d5db;
             margin-bottom: 30px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
-        /* Turntable Deck Design */
-        .turntable-deck {
-            position: relative;
-            background: #0f1115;
-            border: 4px solid #222630;
-            border-radius: 12px;
+        /* Jukebox Display Window */
+        .jukebox-window {
+            background: #111318;
+            border: 4px solid #362215;
+            border-radius: 16px;
             padding: 30px;
-            margin-bottom: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: inset 0 5px 15px rgba(0,0,0,0.8);
-        }
-        .vinyl-record {
-            width: 220px;
-            height: 220px;
-            background: #111;
-            border-radius: 50%;
-            position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.9), inset 0 0 0 12px #1a1a1a, inset 0 0 0 14px #222, inset 0 0 0 26px #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-bottom: 25px;
-            border: 2px solid #333;
+            box-shadow: inset 0 8px 20px rgba(0,0,0,0.9);
+            position: relative;
         }
-        .record-grooves {
-            position: absolute;
-            width: 180px;
-            height: 180px;
+        /* Glowing Neon-Free Arch Accent */
+        .jukebox-arch {
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, #b84a23 0%, #4a1c0d 70%);
+            border: 4px solid #f39c12;
             border-radius: 50%;
-            border: 1px dashed rgba(255,255,255,0.05);
-        }
-        .vinyl-label {
-            width: 80px;
-            height: 80px;
-            background: #b84a23; /* Warm analog label tone */
-            border-radius: 50%;
-            border: 3px solid #f39c12;
+            margin: 0 auto 20px auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-shadow: 0 0 25px rgba(243, 156, 18, 0.3);
         }
-        .label-text {
-            font-size: 0.55rem;
+        .arch-title {
+            font-size: 0.65rem;
             font-weight: bold;
             color: #fff;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .center-hole {
-            width: 12px;
-            height: 12px;
-            background: #0f1115;
-            border-radius: 50%;
-            position: absolute;
+            letter-spacing: 1px;
         }
         .track-info {
             margin-bottom: 20px;
-            width: 100%;
         }
         .track-title {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: #ffffff;
             margin-bottom: 6px;
-            letter-spacing: 0.5px;
         }
         .track-status {
             font-size: 0.85rem;
             color: #f39c12;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             font-weight: bold;
         }
         audio {
@@ -132,14 +104,14 @@
         .nav-links {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-top: 20px;
+            gap: 30px;
+            margin-top: 25px;
             font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
         .nav-links a {
-            color: #a0a6b0;
+            color: #b0b8c4;
             text-decoration: none;
             transition: color 0.2s;
         }
@@ -149,9 +121,9 @@
         footer {
             margin-top: 30px;
             font-size: 0.75rem;
-            color: #777;
+            color: #888;
             text-align: center;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
     </style>
@@ -164,14 +136,9 @@
             <p>High-Fidelity Analog Sound & Timeless Soul</p>
         </header>
 
-        <div class="turntable-deck">
-            <!-- Vinyl Record Graphic Representation -->
-            <div class="vinyl-record">
-                <div class="record-grooves"></div>
-                <div class="vinyl-label">
-                    <span class="label-text">GSR</span>
-                </div>
-                <div class="center-hole"></div>
+        <div class="jukebox-window">
+            <div class="jukebox-arch">
+                <span class="arch-title">GSR Cabinet</span>
             </div>
 
             <div class="track-info">
