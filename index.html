@@ -117,12 +117,12 @@
             height: 220px;
             background: radial-gradient(circle, 
                 #111 0%, 
-                #111 32%, 
-                #222 33%, 
-                #111 35%, 
-                #111 60%, 
-                #1a1a1a 61%, 
-                #0a0a0a 65%
+                #111 38%, 
+                #222 39%, 
+                #111 41%, 
+                #111 68%, 
+                #1a1a1a 69%, 
+                #0a0a0a 75%
             );
             border-radius: 50%;
             position: absolute;
@@ -144,15 +144,15 @@
         }
 
         .record-label {
-            width: 80px;
-            height: 80px;
+            width: 75px;
+            height: 75px;
             background-color: var(--accent-gold);
             border-radius: 50%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            border: 3px solid #fff;
+            border: 2px solid #fff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -167,27 +167,28 @@
             border: 2px solid #fff;
         }
 
+        /* Perfected Unified Tonearm */
         .tonearm {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            width: 100px;
+            top: 20px;
+            right: 25px;
+            width: 30px;
             height: 140px;
             pointer-events: none;
-            transform-origin: top right;
-            transform: rotate(-30deg);
+            transform-origin: 15px 15px;
+            transform: rotate(0deg);
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
             z-index: 10;
         }
 
         .tonearm.engaged {
-            transform: rotate(2deg);
+            transform: rotate(-24deg);
         }
 
         .tonearm-base {
             position: absolute;
-            top: 0; right: 0;
-            width: 28px; height: 28px;
+            top: 0; left: 0;
+            width: 30px; height: 30px;
             background: linear-gradient(135deg, #ccc, #666);
             border-radius: 50%;
             box-shadow: 0 3px 6px rgba(0,0,0,0.5);
@@ -195,20 +196,19 @@
 
         .tonearm-rod {
             position: absolute;
-            top: 12px; right: 12px;
+            top: 15px; left: 13px;
             width: 4px; height: 110px;
             background: linear-gradient(90deg, #ddd, #888, #fff);
-            transform-origin: top center;
-            transform: rotate(-12deg);
             border-radius: 2px;
         }
 
         .tonearm-head {
             position: absolute;
-            bottom: 5px; left: 12px;
+            bottom: 5px; left: 9px;
             width: 12px; height: 18px;
-            background: #333;
+            background: #222;
             border-radius: 2px;
+            border: 1px solid #444;
         }
 
         .track-info {
