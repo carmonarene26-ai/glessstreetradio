@@ -3,57 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gless Street Radio</title>
+    <title>Gless Street Radio | High-Fidelity Analog Sound</title>
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #0d0d0d;
-            color: #f2f2f2;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: #0d0f12;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            text-align: center;
+            padding: 20px;
         }
         .container {
-            max-width: 600px;
-            padding: 40px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            background: #161920;
+            border: 2px solid #2d323d;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            margin-top: 30px;
         }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
             letter-spacing: 2px;
-            color: #e6c687;
+            color: #ffffff;
+            margin-bottom: 6px;
+            text-transform: uppercase;
         }
-        p {
-            font-size: 1.1rem;
-            color: #b3b3b3;
+        header p {
+            font-size: 0.95rem;
+            color: #a0a6b0;
             margin-bottom: 30px;
-        }
-        .status {
-            display: inline-block;
-            padding: 8px 16px;
-            background: #262626;
-            border: 1px solid #404040;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            color: #8cd9b3;
             letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        /* Turntable Deck Design */
+        .turntable-deck {
+            position: relative;
+            background: #0f1115;
+            border: 4px solid #222630;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: inset 0 5px 15px rgba(0,0,0,0.8);
+        }
+        .vinyl-record {
+            width: 220px;
+            height: 220px;
+            background: #111;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.9), inset 0 0 0 12px #1a1a1a, inset 0 0 0 14px #222, inset 0 0 0 26px #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            border: 2px solid #333;
+        }
+        .record-grooves {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 1px dashed rgba(255,255,255,0.05);
+        }
+        .vinyl-label {
+            width: 80px;
+            height: 80px;
+            background: #b84a23; /* Warm analog label tone */
+            border-radius: 50%;
+            border: 3px solid #f39c12;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .label-text {
+            font-size: 0.55rem;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .center-hole {
+            width: 12px;
+            height: 12px;
+            background: #0f1115;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .track-info {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .track-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+        .track-status {
+            font-size: 0.85rem;
+            color: #f39c12;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+            accent-color: #f39c12;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-links a {
+            color: #a0a6b0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #777;
+            text-align: center;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>GLESS STREET RADIO</h1>
-        <p>High-Fidelity Analog Sound & Timeless Soul</p>
-        <div class="status">Broadcasting Soon</div>
+        <header>
+            <h1>Gless Street Radio</h1>
+            <p>High-Fidelity Analog Sound & Timeless Soul</p>
+        </header>
+
+        <div class="turntable-deck">
+            <!-- Vinyl Record Graphic Representation -->
+            <div class="vinyl-record">
+                <div class="record-grooves"></div>
+                <div class="vinyl-label">
+                    <span class="label-text">GSR</span>
+                </div>
+                <div class="center-hole"></div>
+            </div>
+
+            <div class="track-info">
+                <div class="track-title">Analog Studio Master Feed</div>
+                <div class="track-status">Needle Dropping Soon</div>
+            </div>
+            
+            <audio controls>
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="nav-links">
+            <a href="#catalog">Catalog</a>
+            <a href="#about">About</a>
+            <a href="#terms">Terms</a>
+        </div>
     </div>
+
+    <footer>
+        &copy; 2026 Gless Street Radio. Produced by Rene Carmona.
+    </footer>
+
 </body>
 </html>
