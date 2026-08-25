@@ -9,15 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0806;
-            --chrome-light: #f0f0f0;
-            --chrome-dark: #888888;
-            --cabinet-dark: #120e0b;
+            --bg-dark: #12100e;
+            --card-bg: #1a1613;
+            --card-border: #332922;
             --accent-gold: #d4af37;
             --accent-gold-hover: #e6c555;
             --cream: #f4eee1;
             --text-muted: #a3988d;
-            --amber-glow: rgba(255, 170, 50, 0.25);
         }
 
         * {
@@ -38,14 +36,14 @@
 
         header {
             text-align: center;
-            padding: 2rem 1rem 1rem 1rem;
-            border-bottom: 2px solid #2a2018;
-            background: linear-gradient(to bottom, #1d140e, var(--bg-dark));
+            padding: 2.5rem 1rem 1rem 1rem;
+            border-bottom: 1px solid var(--card-border);
+            background: linear-gradient(to bottom, #1d1814, var(--bg-dark));
         }
 
         header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.3rem;
+            font-size: 2.5rem;
             letter-spacing: 2px;
             color: var(--cream);
             margin-bottom: 0.3rem;
@@ -53,7 +51,7 @@
 
         header p {
             color: var(--accent-gold);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 600;
@@ -64,268 +62,182 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1.5rem 1rem;
+            padding: 2rem 1rem;
         }
 
-        /* Classic AMI Jukebox Cabinet Shell with Heavy Chrome Trim */
-        .ami-jukebox {
-            background: linear-gradient(135deg, #1f1814 0%, var(--cabinet-dark) 100%);
-            border: 6px solid;
-            border-image: linear-gradient(to bottom, #dcdcdc, #555555, #dcdcdc) 1;
+        /* Custom Streamer Card Shell */
+        .station-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 16px;
             width: 100%;
-            max-width: 520px;
-            padding: 1.5rem;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.95), inset 0 0 40px rgba(0, 0, 0, 0.8);
+            max-width: 480px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
             position: relative;
         }
 
-        /* Illuminated Title-Strip Selector Bank (Top Dome Section) */
-        .title-strip-bank {
-            background: #fff8eb;
-            border: 3px solid #332211;
-            border-radius: 6px;
-            padding: 0.8rem;
-            margin-bottom: 1.2rem;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.2), 0 0 15px var(--amber-glow);
-            color: #1a1a1a;
-        }
-
-        .strip-header {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #664411;
-            margin-bottom: 0.4rem;
-            border-bottom: 1px dashed #cca877;
-            padding-bottom: 0.2rem;
-        }
-
-        .strip-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.2rem 0.4rem;
-            background: #fdf5e6;
-            border: 1px solid #e3d3b8;
-            margin-bottom: 3px;
-            border-radius: 3px;
-        }
-
-        .strip-row span:nth-child(1) { color: #b22222; width: 15%; }
-        .strip-row span:nth-child(2) { flex: 1; text-align: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 0 5px;}
-        .strip-row span:nth-child(3) { color: #333; width: 25%; text-align: right; }
-
-        /* Curved Glass Viewing Window for Turntable */
-        .turntable-deck {
+        /* Centered Artwork Display Area */
+        .artwork-container {
             width: 100%;
-            height: 220px;
-            background: radial-gradient(circle, #221914 0%, #0f0b08 85%);
-            border-radius: 8px;
-            border: 4px inset #444;
+            aspect-ratio: 1 / 1;
+            background: linear-gradient(135deg, #2b221a, #15110e);
+            border-radius: 12px;
+            border: 2px solid var(--card-border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1.2rem;
             overflow: hidden;
-            box-shadow: inset 0 10px 25px rgba(0,0,0,0.9);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
         }
 
-        .vinyl-record {
-            width: 190px;
-            height: 190px;
-            background: radial-gradient(circle, 
-                #111 0%, 
-                #111 38%, 
-                #222 39%, 
-                #111 41%, 
-                #111 68%, 
-                #1a1a1a 69%, 
-                #0a0a0a 75%
-            );
-            border-radius: 50%;
-            position: absolute;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-            transform: translateY(-100px) scale(0.5);
-            opacity: 0;
-            transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
-        }
-
-        .vinyl-record.playing {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-            animation: spin 3s linear infinite 0.8s;
-        }
-
-        @keyframes spin {
-            0% { transform: translateY(0) scale(1) rotate(0deg); }
-            100% { transform: translateY(0) scale(1) rotate(360deg); }
-        }
-
-        .record-label {
-            width: 65px;
-            height: 65px;
-            background-color: var(--accent-gold);
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 2px solid #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .record-center-hole {
-            width: 8px;
-            height: 8px;
-            background-color: var(--bg-dark);
-            border-radius: 50%;
-            border: 2px solid #fff;
-        }
-
-        /* Tonearm Alignment */
-        .tonearm {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            width: 30px;
-            height: 120px;
-            pointer-events: none;
-            transform-origin: 15px 15px;
-            transform: rotate(0deg);
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
-            z-index: 10;
-        }
-
-        .tonearm.engaged {
-            transform: rotate(38deg);
-        }
-
-        @media (max-width: 600px) {
-            .tonearm.engaged {
-                transform: rotate(24deg);
-            }
-        }
-
-        .tonearm-base {
-            position: absolute;
-            top: 0; left: 0;
-            width: 26px; height: 26px;
-            background: linear-gradient(135deg, #ccc, #666);
-            border-radius: 50%;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.5);
-        }
-
-        .tonearm-rod {
-            position: absolute;
-            top: 13px; left: 11px;
-            width: 4px; height: 95px;
-            background: linear-gradient(90deg, #ddd, #888, #fff);
-            border-radius: 2px;
-        }
-
-        .tonearm-head {
-            position: absolute;
-            bottom: 5px; left: 7px;
-            width: 12px; height: 16px;
-            background: #222;
-            border-radius: 2px;
-            border: 1px solid #444;
-        }
-
-        /* Chrome Selection Button Deck (Bottom Console) */
-        .selection-deck {
-            background: linear-gradient(to bottom, #dcdcdc, #999999);
-            border: 2px solid #555;
-            border-radius: 6px;
-            padding: 0.8rem;
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 1rem;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .sel-btn {
-            background: linear-gradient(to bottom, #fff, #cca833);
-            border: 1px solid #665219;
-            color: #1a1a1a;
-            font-weight: 800;
-            font-size: 0.75rem;
-            width: 32px;
-            height: 32px;
-            border-radius: 4px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            cursor: default;
-        }
-
-        .track-info {
+        .artwork-placeholder {
             text-align: center;
-            margin-bottom: 1rem;
-            min-height: 40px;
+            padding: 1.5rem;
+        }
+
+        .artwork-placeholder h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .artwork-placeholder p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* Track Info Section */
+        .track-header {
+            margin-bottom: 1.2rem;
         }
 
         .track-title {
-            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--cream);
-            margin-bottom: 0.1rem;
+            margin-bottom: 0.2rem;
         }
 
-        .track-meta {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+        .track-artist {
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
         }
 
-        .player-controls {
+        /* Custom Player Controls & Progress */
+        .player-console {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 1.2rem;
         }
 
-        .btn-drop {
-            background: linear-gradient(to bottom, #e6c555, var(--accent-gold));
-            color: #12100e;
-            border: 1px solid #b8972b;
-            padding: 0.85rem;
-            border-radius: 6px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: #2a221b;
+            border-radius: 3px;
+            overflow: hidden;
             cursor: pointer;
-            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background-color: var(--accent-gold);
+            transition: width 0.1s linear;
+        }
+
+        .time-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: -0.8rem;
+        }
+
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .btn-control {
+            background: none;
+            border: none;
+            color: var(--cream);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .btn-control:hover {
+            color: var(--accent-gold);
+        }
+
+        .btn-play-main {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            transition: background-color 0.2s ease, transform 0.1s ease;
         }
 
-        .btn-drop:hover {
-            background: linear-gradient(to bottom, #f3d466, var(--accent-gold-hover));
+        .btn-play-main:hover {
+            background-color: var(--accent-gold-hover);
         }
 
-        .btn-drop:active {
-            transform: scale(0.98);
+        .btn-play-main:active {
+            transform: scale(0.95);
+        }
+
+        /* Style Description & Metadata Box */
+        .meta-box {
+            background: #14110f;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .meta-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .meta-text {
+            font-size: 0.85rem;
+            color: var(--cream);
+            font-style: italic;
         }
 
         audio {
-            width: 100%;
-            accent-color: var(--accent-gold);
+            display: none;
         }
 
         footer {
-            border-top: 1px solid #261e18;
-            padding: 1.2rem 1rem;
-            background-color: #17110c;
+            border-top: 1px solid var(--card-border);
+            padding: 1.5rem 1rem;
+            background-color: var(--card-bg);
             text-align: center;
         }
 
@@ -334,13 +246,13 @@
             justify-content: center;
             gap: 2rem;
             list-style: none;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-weight: 600;
@@ -366,58 +278,48 @@
     </header>
 
     <main>
-        <div class="ami-jukebox">
-            <!-- Vintage Illuminated Title-Strip Header -->
-            <div class="title-strip-bank">
-                <div class="strip-header">AMI Selector Console • High-Fidelity Bank</div>
-                <div class="strip-row">
-                    <span>A-1</span>
-                    <span>Con Sabor (Analog Studio Master)</span>
-                    <span>Rene Carmona</span>
-                </div>
-                <div class="strip-row">
-                    <span>A-2</span>
-                    <span>The Truth Box Session</span>
-                    <span>Stereo Master</span>
+        <div class="station-card">
+            <!-- Centered Artwork Showcase -->
+            <div class="artwork-container">
+                <div class="artwork-placeholder">
+                    <h3>Con Sabor</h3>
+                    <p>Mid-Century Analog Master</p>
                 </div>
             </div>
 
-            <!-- Turntable Glass Viewing Window -->
-            <div class="turntable-deck" id="deck">
-                <div class="vinyl-record" id="vinyl">
-                    <div class="record-label">
-                        <div class="record-center-hole"></div>
-                    </div>
+            <!-- Track Info -->
+            <div class="track-header">
+                <div class="track-title" id="trackTitle">Con Sabor</div>
+                <div class="track-artist">Produced by Rene Carmona</div>
+            </div>
+
+            <!-- Player Console -->
+            <div class="player-console">
+                <div class="progress-bar-container" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
                 </div>
-                <div class="tonearm" id="tonearm">
-                    <div class="tonearm-base"></div>
-                    <div class="tonearm-rod"></div>
-                    <div class="tonearm-head"></div>
+                <div class="time-labels">
+                    <span id="currentTime">0:00</span>
+                    <span id="totalTime">2:12</span>
+                </div>
+
+                <div class="control-buttons">
+                    <button class="btn-control" id="prevBtn" title="Previous Track">⏮</button>
+                    <button class="btn-play-main" id="playBtn" title="Play / Pause">▶</button>
+                    <button class="btn-control" id="nextBtn" title="Next Track">⏭</button>
+                </div>
+
+                <!-- Style Metadata Tag -->
+                <div class="meta-box">
+                    <div class="meta-title">Style Description</div>
+                    <div class="meta-text">High-fidelity Analog Studio Master, Tube-driven warmth, wide stereo field.</div>
                 </div>
             </div>
 
-            <!-- Chrome Selection Button Deck -->
-            <div class="selection-deck">
-                <div class="sel-btn">A</div>
-                <div class="sel-btn">1</div>
-                <div class="sel-btn">3</div>
-                <div class="sel-btn">5</div>
-                <div class="sel-btn">7</div>
-                <div class="sel-btn">9</div>
-            </div>
-
-            <div class="track-info">
-                <div class="track-title" id="trackTitle">Needle Dropping Soon</div>
-                <div class="track-meta" id="trackMeta">Select play to drop the record</div>
-            </div>
-
-            <div class="player-controls">
-                <button class="btn-drop" id="playBtn">Drop Needle & Play</button>
-                <audio id="audioPlayer" controls preload="metadata">
-                    <source src="" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
+            <audio id="audioPlayer" preload="metadata">
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
         </div>
     </main>
 
@@ -432,28 +334,23 @@
 
     <script>
         const playBtn = document.getElementById('playBtn');
-        const vinyl = document.getElementById('vinyl');
-        const tonearm = document.getElementById('tonearm');
         const audioPlayer = document.getElementById('audioPlayer');
         const trackTitle = document.getElementById('trackTitle');
-        const trackMeta = document.getElementById('trackMeta');
+        const progressFill = document.getElementById('progressFill');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeEl = document.getElementById('currentTime');
 
         let isPlaying = false;
 
         playBtn.addEventListener('click', () => {
             if (!isPlaying) {
-                vinyl.classList.add('playing');
-                tonearm.classList.add('engaged');
-                playBtn.textContent = 'Lift Needle & Pause';
-                trackTitle.textContent = 'Featured Session: Analog Master';
-                trackMeta.textContent = 'Tube-Driven Warmth • Wide Stereo Field';
+                playBtn.textContent = '❚❚';
                 isPlaying = true;
+                // Simulated progress animation for preview mode
+                progressFill.style.width = '35%';
+                currentTimeEl.textContent = '0:45';
             } else {
-                vinyl.classList.remove('playing');
-                tonearm.classList.remove('engaged');
-                playBtn.textContent = 'Drop Needle & Play';
-                trackTitle.textContent = 'Needle Dropping Soon';
-                trackMeta.textContent = 'Select play to drop the record';
+                playBtn.textContent = '▶';
                 isPlaying = false;
             }
         });
