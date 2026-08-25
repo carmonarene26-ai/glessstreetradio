@@ -9,15 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0f0d0b;
-            --cabinet-wood: #2a1b12;
-            --cabinet-border: #4a3222;
-            --glass-bg: #16120f;
+            --bg-dark: #0a0806;
+            --chrome-light: #f0f0f0;
+            --chrome-dark: #888888;
+            --cabinet-dark: #120e0b;
             --accent-gold: #d4af37;
             --accent-gold-hover: #e6c555;
             --cream: #f4eee1;
             --text-muted: #a3988d;
-            --amber-glow: rgba(212, 175, 55, 0.15);
+            --amber-glow: rgba(255, 170, 50, 0.25);
         }
 
         * {
@@ -39,7 +39,7 @@
         header {
             text-align: center;
             padding: 2rem 1rem 1rem 1rem;
-            border-bottom: 1px solid #261e18;
+            border-bottom: 2px solid #2a2018;
             background: linear-gradient(to bottom, #1d140e, var(--bg-dark));
         }
 
@@ -67,71 +67,77 @@
             padding: 1.5rem 1rem;
         }
 
-        /* Architectural Vintage Jukebox Cabinet Styling */
-        .jukebox-cabinet {
-            background: linear-gradient(135deg, #322116 0%, var(--cabinet-wood) 50%, #1c120c 100%);
-            border: 4px solid var(--cabinet-border);
-            border-radius: 20px 20px 12px 12px;
+        /* Classic AMI Jukebox Cabinet Shell with Heavy Chrome Trim */
+        .ami-jukebox {
+            background: linear-gradient(135deg, #1f1814 0%, var(--cabinet-dark) 100%);
+            border: 6px solid;
+            border-image: linear-gradient(to bottom, #dcdcdc, #555555, #dcdcdc) 1;
+            border-radius: 16px;
             width: 100%;
-            max-width: 500px;
-            padding: 1.8rem;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(0, 0, 0, 0.7);
+            max-width: 520px;
+            padding: 1.5rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.95), inset 0 0 40px rgba(0, 0, 0, 0.8);
             position: relative;
         }
 
-        /* Glowing Amber Side Architectural Pillars */
-        .jukebox-cabinet::before, .jukebox-cabinet::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            bottom: 20px;
-            width: 10px;
-            background: linear-gradient(to bottom, #8c672b, var(--accent-gold), #8c672b);
-            border-radius: 4px;
-            box-shadow: 0 0 12px var(--accent-gold);
-        }
-        .jukebox-cabinet::before { left: 10px; }
-        .jukebox-cabinet::after { right: 10px; }
-
-        .cabinet-header {
-            text-align: center;
+        /* Illuminated Title-Strip Selector Bank (Top Dome Section) */
+        .title-strip-bank {
+            background: #fff8eb;
+            border: 3px solid #332211;
+            border-radius: 6px;
+            padding: 0.8rem;
             margin-bottom: 1.2rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.2), 0 0 15px var(--amber-glow);
+            color: #1a1a1a;
         }
 
-        .cabinet-header h2 {
+        .strip-header {
+            text-align: center;
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--cream);
-            letter-spacing: 1px;
-            margin-bottom: 0.1rem;
-        }
-
-        .cabinet-header span {
-            font-size: 0.7rem;
-            color: var(--accent-gold);
-            letter-spacing: 2px;
+            font-size: 0.8rem;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #664411;
+            margin-bottom: 0.4rem;
+            border-bottom: 1px dashed #cca877;
+            padding-bottom: 0.2rem;
         }
 
-        /* Glass Viewing Window Container */
+        .strip-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.4rem;
+            background: #fdf5e6;
+            border: 1px solid #e3d3b8;
+            margin-bottom: 3px;
+            border-radius: 3px;
+        }
+
+        .strip-row span:nth-child(1) { color: #b22222; width: 15%; }
+        .strip-row span:nth-child(2) { flex: 1; text-align: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 0 5px;}
+        .strip-row span:nth-child(3) { color: #333; width: 25%; text-align: right; }
+
+        /* Curved Glass Viewing Window for Turntable */
         .turntable-deck {
             width: 100%;
-            height: 250px;
-            background: radial-gradient(circle, #221914 0%, var(--glass-bg) 85%);
-            border-radius: 12px;
-            border: 3px inset #3a2b20;
+            height: 220px;
+            background: radial-gradient(circle, #221914 0%, #0f0b08 85%);
+            border-radius: 8px;
+            border: 4px inset #444;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 1.2rem;
             overflow: hidden;
-            box-shadow: inset 0 10px 25px rgba(0,0,0,0.9), 0 0 15px var(--amber-glow);
+            box-shadow: inset 0 10px 25px rgba(0,0,0,0.9);
         }
 
         .vinyl-record {
-            width: 210px;
-            height: 210px;
+            width: 190px;
+            height: 190px;
             background: radial-gradient(circle, 
                 #111 0%, 
                 #111 38%, 
@@ -161,8 +167,8 @@
         }
 
         .record-label {
-            width: 70px;
-            height: 70px;
+            width: 65px;
+            height: 65px;
             background-color: var(--accent-gold);
             border-radius: 50%;
             position: absolute;
@@ -177,20 +183,20 @@
         }
 
         .record-center-hole {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background-color: var(--bg-dark);
             border-radius: 50%;
             border: 2px solid #fff;
         }
 
-        /* Tonearm Desktop Default */
+        /* Tonearm Alignment */
         .tonearm {
             position: absolute;
-            top: 20px;
-            right: 25px;
+            top: 15px;
+            right: 20px;
             width: 30px;
-            height: 140px;
+            height: 120px;
             pointer-events: none;
             transform-origin: 15px 15px;
             transform: rotate(0deg);
@@ -202,7 +208,6 @@
             transform: rotate(38deg);
         }
 
-        /* Tonearm Mobile Adjustment */
         @media (max-width: 600px) {
             .tonearm.engaged {
                 transform: rotate(24deg);
@@ -212,7 +217,7 @@
         .tonearm-base {
             position: absolute;
             top: 0; left: 0;
-            width: 30px; height: 30px;
+            width: 26px; height: 26px;
             background: linear-gradient(135deg, #ccc, #666);
             border-radius: 50%;
             box-shadow: 0 3px 6px rgba(0,0,0,0.5);
@@ -220,32 +225,61 @@
 
         .tonearm-rod {
             position: absolute;
-            top: 15px; left: 13px;
-            width: 4px; height: 110px;
+            top: 13px; left: 11px;
+            width: 4px; height: 95px;
             background: linear-gradient(90deg, #ddd, #888, #fff);
             border-radius: 2px;
         }
 
         .tonearm-head {
             position: absolute;
-            bottom: 5px; left: 9px;
-            width: 12px; height: 18px;
+            bottom: 5px; left: 7px;
+            width: 12px; height: 16px;
             background: #222;
             border-radius: 2px;
             border: 1px solid #444;
         }
 
+        /* Chrome Selection Button Deck (Bottom Console) */
+        .selection-deck {
+            background: linear-gradient(to bottom, #dcdcdc, #999999);
+            border: 2px solid #555;
+            border-radius: 6px;
+            padding: 0.8rem;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 1rem;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .sel-btn {
+            background: linear-gradient(to bottom, #fff, #cca833);
+            border: 1px solid #665219;
+            color: #1a1a1a;
+            font-weight: 800;
+            font-size: 0.75rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            cursor: default;
+        }
+
         .track-info {
             text-align: center;
-            margin-bottom: 1.2rem;
-            min-height: 45px;
+            margin-bottom: 1rem;
+            min-height: 40px;
         }
 
         .track-title {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--cream);
-            margin-bottom: 0.15rem;
+            margin-bottom: 0.1rem;
         }
 
         .track-meta {
@@ -332,12 +366,23 @@
     </header>
 
     <main>
-        <div class="jukebox-cabinet">
-            <div class="cabinet-header">
-                <h2>The Truth Box Jukebox</h2>
-                <span>Analog Studio Master</span>
+        <div class="ami-jukebox">
+            <!-- Vintage Illuminated Title-Strip Header -->
+            <div class="title-strip-bank">
+                <div class="strip-header">AMI Selector Console • High-Fidelity Bank</div>
+                <div class="strip-row">
+                    <span>A-1</span>
+                    <span>Con Sabor (Analog Studio Master)</span>
+                    <span>Rene Carmona</span>
+                </div>
+                <div class="strip-row">
+                    <span>A-2</span>
+                    <span>The Truth Box Session</span>
+                    <span>Stereo Master</span>
+                </div>
             </div>
 
+            <!-- Turntable Glass Viewing Window -->
             <div class="turntable-deck" id="deck">
                 <div class="vinyl-record" id="vinyl">
                     <div class="record-label">
@@ -349,6 +394,16 @@
                     <div class="tonearm-rod"></div>
                     <div class="tonearm-head"></div>
                 </div>
+            </div>
+
+            <!-- Chrome Selection Button Deck -->
+            <div class="selection-deck">
+                <div class="sel-btn">A</div>
+                <div class="sel-btn">1</div>
+                <div class="sel-btn">3</div>
+                <div class="sel-btn">5</div>
+                <div class="sel-btn">7</div>
+                <div class="sel-btn">9</div>
             </div>
 
             <div class="track-info">
