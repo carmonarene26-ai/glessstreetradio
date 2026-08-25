@@ -167,7 +167,7 @@
             border: 2px solid #fff;
         }
 
-        /* Fixed pivot and positive swing angle */
+        /* Tonearm Desktop Default */
         .tonearm {
             position: absolute;
             top: 20px;
@@ -182,7 +182,14 @@
         }
 
         .tonearm.engaged {
-            transform: rotate(28deg);
+            transform: rotate(34deg);
+        }
+
+        /* Adjusted Tonearm Swing specifically for Mobile/Phones */
+        @media (max-width: 600px) {
+            .tonearm.engaged {
+                transform: rotate(18deg);
+            }
         }
 
         .tonearm-base {
