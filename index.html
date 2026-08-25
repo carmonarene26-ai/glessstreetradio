@@ -32,6 +32,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            overflow-x: hidden;
         }
 
         header {
@@ -63,80 +64,113 @@
             justify-content: center;
             align-items: center;
             padding: 2rem 1rem;
+            width: 100%;
         }
 
-        /* Custom Streamer Card Shell */
-        .station-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
+        .station-container {
             width: 100%;
-            max-width: 480px;
-            padding: 2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-            position: relative;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Centered Artwork Display Area */
-        .artwork-container {
+        /* Three-Panel Cover-Flow Carousel Layout */
+        .carousel-stage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
             width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Peeking Side Cards */
+        .side-card {
+            width: 18%;
             aspect-ratio: 1 / 1;
-            background: linear-gradient(135deg, #2b221a, #15110e);
-            border-radius: 12px;
-            border: 2px solid var(--card-border);
+            background: #171310;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            opacity: 0.4;
+            transform: scale(0.85);
+            transition: all 0.3s ease;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-        }
-
-        .artwork-placeholder {
+            font-size: 0.7rem;
+            color: var(--text-muted);
             text-align: center;
+            padding: 0.5rem;
+            overflow: hidden;
+        }
+
+        /* Main Center Active Card */
+        .main-card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 16px;
+            width: 60%;
+            aspect-ratio: 1 / 1;
             padding: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
-        .artwork-placeholder h3 {
+        .main-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--accent-gold);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
-        .artwork-placeholder p {
-            font-size: 0.85rem;
+        .main-card p {
+            font-size: 0.8rem;
             color: var(--text-muted);
             letter-spacing: 1px;
         }
 
-        /* Track Info Section */
+        /* Controls Panel Container */
+        .console-panel {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            width: 100%;
+            padding: 1.5rem;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+        }
+
         .track-header {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
         .track-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--cream);
             margin-bottom: 0.2rem;
         }
 
         .track-artist {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--accent-gold);
             letter-spacing: 1px;
             text-transform: uppercase;
             font-weight: 600;
         }
 
-        /* Custom Player Controls & Progress */
         .player-console {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         .progress-bar-container {
@@ -149,10 +183,9 @@
         }
 
         .progress-fill {
-            width: 0%;
+            width: 35%;
             height: 100%;
             background-color: var(--accent-gold);
-            transition: width 0.1s linear;
         }
 
         .time-labels {
@@ -160,7 +193,7 @@
             justify-content: space-between;
             font-size: 0.75rem;
             color: var(--text-muted);
-            margin-top: -0.8rem;
+            margin-top: -0.6rem;
         }
 
         .control-buttons {
@@ -187,13 +220,13 @@
             background-color: var(--accent-gold);
             color: var(--bg-dark);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
             transition: background-color 0.2s ease, transform 0.1s ease;
@@ -207,25 +240,24 @@
             transform: scale(0.95);
         }
 
-        /* Style Description & Metadata Box */
         .meta-box {
             background: #14110f;
             border: 1px solid var(--card-border);
             border-radius: 8px;
-            padding: 1rem;
-            margin-top: 1.2rem;
+            padding: 0.8rem;
+            margin-top: 1rem;
         }
 
         .meta-title {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--text-muted);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         .meta-text {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--cream);
             font-style: italic;
         }
@@ -278,48 +310,45 @@
     </header>
 
     <main>
-        <div class="station-card">
-            <!-- Centered Artwork Showcase -->
-            <div class="artwork-container">
-                <div class="artwork-placeholder">
+        <div class="station-container">
+            <!-- Three-Panel Cover-Flow View -->
+            <div class="carousel-stage">
+                <div class="side-card">Previous Track</div>
+                <div class="main-card">
                     <h3>Con Sabor</h3>
-                    <p>Mid-Century Analog Master</p>
+                    <p>Analog Master</p>
                 </div>
+                <div class="side-card">Next Track</div>
             </div>
 
-            <!-- Track Info -->
-            <div class="track-header">
-                <div class="track-title" id="trackTitle">Con Sabor</div>
-                <div class="track-artist">Produced by Rene Carmona</div>
+            <!-- Player Console Panel -->
+            <div class="console-panel">
+                <div class="track-header">
+                    <div class="track-title" id="trackTitle">Con Sabor</div>
+                    <div class="track-artist">Produced by Rene Carmona</div>
+                </div>
+
+                <div class="player-console">
+                    <div class="progress-bar-container" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-labels">
+                        <span id="currentTime">0:45</span>
+                        <span id="totalTime">2:12</span>
+                    </div>
+
+                    <div class="control-buttons">
+                        <button class="btn-control" id="prevBtn" title="Previous Track">⏮</button>
+                        <button class="btn-play-main" id="playBtn" title="Play / Pause">❚❚</button>
+                        <button class="btn-control" id="nextBtn" title="Next Track">⏭</button>
+                    </div>
+
+                    <div class="meta-box">
+                        <div class="meta-title">Style Description</div>
+                        <div class="meta-text">High-fidelity Analog Studio Master, Tube-driven warmth, wide stereo field.</div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Player Console -->
-            <div class="player-console">
-                <div class="progress-bar-container" id="progressBar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <div class="time-labels">
-                    <span id="currentTime">0:00</span>
-                    <span id="totalTime">2:12</span>
-                </div>
-
-                <div class="control-buttons">
-                    <button class="btn-control" id="prevBtn" title="Previous Track">⏮</button>
-                    <button class="btn-play-main" id="playBtn" title="Play / Pause">▶</button>
-                    <button class="btn-control" id="nextBtn" title="Next Track">⏭</button>
-                </div>
-
-                <!-- Style Metadata Tag -->
-                <div class="meta-box">
-                    <div class="meta-title">Style Description</div>
-                    <div class="meta-text">High-fidelity Analog Studio Master, Tube-driven warmth, wide stereo field.</div>
-                </div>
-            </div>
-
-            <audio id="audioPlayer" preload="metadata">
-                <source src="" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
         </div>
     </main>
 
@@ -334,24 +363,15 @@
 
     <script>
         const playBtn = document.getElementById('playBtn');
-        const audioPlayer = document.getElementById('audioPlayer');
-        const trackTitle = document.getElementById('trackTitle');
-        const progressFill = document.getElementById('progressFill');
-        const progressBar = document.getElementById('progressBar');
-        const currentTimeEl = document.getElementById('currentTime');
-
-        let isPlaying = false;
+        let isPlaying = true;
 
         playBtn.addEventListener('click', () => {
-            if (!isPlaying) {
-                playBtn.textContent = '❚❚';
-                isPlaying = true;
-                // Simulated progress animation for preview mode
-                progressFill.style.width = '35%';
-                currentTimeEl.textContent = '0:45';
-            } else {
+            if (isPlaying) {
                 playBtn.textContent = '▶';
                 isPlaying = false;
+            } else {
+                playBtn.textContent = '❚❚';
+                isPlaying = true;
             }
         });
     </script>
