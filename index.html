@@ -1,379 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gless Street Radio | High-Fidelity Analog Sound</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #12100e;
-            --card-bg: #1a1613;
-            --card-border: #332922;
-            --accent-gold: #d4af37;
-            --accent-gold-hover: #e6c555;
-            --cream: #f4eee1;
-            --text-muted: #a3988d;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--cream);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow-x: hidden;
-        }
-
-        header {
-            text-align: center;
-            padding: 2.5rem 1rem 1rem 1rem;
-            border-bottom: 1px solid var(--card-border);
-            background: linear-gradient(to bottom, #1d1814, var(--bg-dark));
-        }
-
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-            color: var(--cream);
-            margin-bottom: 0.3rem;
-        }
-
-        header p {
-            color: var(--accent-gold);
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem 1rem;
-            width: 100%;
-        }
-
-        .station-container {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Three-Panel Cover-Flow Carousel Layout */
-        .carousel-stage {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            width: 100%;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Peeking Side Cards */
-        .side-card {
-            width: 18%;
-            aspect-ratio: 1 / 1;
-            background: #171310;
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            opacity: 0.4;
-            transform: scale(0.85);
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-align: center;
-            padding: 0.5rem;
-            overflow: hidden;
-        }
-
-        /* Main Center Active Card */
-        .main-card {
-            background-color: var(--card-bg);
-            border: 2px solid var(--card-border);
-            border-radius: 16px;
-            width: 60%;
-            aspect-ratio: 1 / 1;
-            padding: 1.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .main-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: var(--accent-gold);
-            margin-bottom: 0.4rem;
-        }
-
-        .main-card p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-
-        /* Controls Panel Container */
-        .console-panel {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
-            width: 100%;
-            padding: 1.5rem;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-        }
-
-        .track-header {
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .track-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--cream);
-            margin-bottom: 0.2rem;
-        }
-
-        .track-artist {
-            font-size: 0.85rem;
-            color: var(--accent-gold);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .player-console {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .progress-bar-container {
-            width: 100%;
-            height: 6px;
-            background: #2a221b;
-            border-radius: 3px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .progress-fill {
-            width: 35%;
-            height: 100%;
-            background-color: var(--accent-gold);
-        }
-
-        .time-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: -0.6rem;
-        }
-
-        .control-buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .btn-control {
-            background: none;
-            border: none;
-            color: var(--cream);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .btn-control:hover {
-            color: var(--accent-gold);
-        }
-
-        .btn-play-main {
-            background-color: var(--accent-gold);
-            color: var(--bg-dark);
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.1rem;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-            transition: background-color 0.2s ease, transform 0.1s ease;
-        }
-
-        .btn-play-main:hover {
-            background-color: var(--accent-gold-hover);
-        }
-
-        .btn-play-main:active {
-            transform: scale(0.95);
-        }
-
-        .meta-box {
-            background: #14110f;
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .meta-title {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            margin-bottom: 0.2rem;
-        }
-
-        .meta-text {
-            font-size: 0.8rem;
-            color: var(--cream);
-            font-style: italic;
-        }
-
-        audio {
-            display: none;
-        }
-
-        footer {
-            border-top: 1px solid var(--card-border);
-            padding: 1.5rem 1rem;
-            background-color: var(--card-bg);
-            text-align: center;
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            list-style: none;
-            margin-bottom: 1rem;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-gold);
-        }
-
-        .producer-credit {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gless Street Radio | High-Fidelity Analog Studio Master</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <h1>Gless Street Radio</h1>
-        <p>High-Fidelity Analog Sound</p>
-    </header>
+  <header class="station-header">
+    <h1>GLESS STREET RADIO</h1>
+    <p class="tagline">High-Fidelity Analog Sound • Tube-Driven Warmth</p>
+  </header>
 
-    <main>
-        <div class="station-container">
-            <!-- Three-Panel Cover-Flow View -->
-            <div class="carousel-stage">
-                <div class="side-card">Previous Track</div>
-                <div class="main-card">
-                    <h3>Con Sabor</h3>
-                    <p>Analog Master</p>
-                </div>
-                <div class="side-card">Next Track</div>
-            </div>
+  <main class="deck-container">
+    <div class="card card-side" id="card-prev">
+      <span class="card-label">PREVIOUS TRACK</span>
+      <img src="https://via.placeholder.com/300" alt="Previous Track Art" id="img-prev">
+      <h4 id="title-prev">Midnight Thunder</h4>
+      <p id="artist-prev">Produced by Rene Carmona</p>
+    </div>
 
-            <!-- Player Console Panel -->
-            <div class="console-panel">
-                <div class="track-header">
-                    <div class="track-title" id="trackTitle">Con Sabor</div>
-                    <div class="track-artist">Produced by Rene Carmona</div>
-                </div>
+    <div class="card card-center" id="card-main">
+      <span class="card-label live-badge"><i class="fa-solid fa-circle"></i> NOW PLAYING</span>
+      <img src="https://via.placeholder.com/400" alt="Current Track Art" id="img-main">
+      <h2 id="title-main">Always the One</h2>
+      <p id="artist-main">Produced by Rene Carmona</p>
+      <div class="sound-spec">4K Analog Master • Tube Warmth • 3:05</div>
+    </div>
 
-                <div class="player-console">
-                    <div class="progress-bar-container" id="progressBar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="time-labels">
-                        <span id="currentTime">0:45</span>
-                        <span id="totalTime">2:12</span>
-                    </div>
+    <div class="card card-side" id="card-next">
+      <span class="card-label">UPCOMING NEXT</span>
+      <img src="https://via.placeholder.com/300" alt="Upcoming Track Art" id="img-next">
+      <h4 id="title-next">El Rey de la Suerte</h4>
+      <p id="artist-next">Produced by Rene Carmona</p>
+    </div>
+  </main>
 
-                    <div class="control-buttons">
-                        <button class="btn-control" id="prevBtn" title="Previous Track">⏮</button>
-                        <button class="btn-play-main" id="playBtn" title="Play / Pause">❚❚</button>
-                        <button class="btn-control" id="nextBtn" title="Next Track">⏭</button>
-                    </div>
+  <section class="player-container">
+    <div class="track-meta">
+      <span id="player-track-title">Always the One</span>
+      <span class="meta-divider">•</span>
+      <span id="player-track-credit">Produced by Rene Carmona</span>
+    </div>
 
-                    <div class="meta-box">
-                        <div class="meta-title">Style Description</div>
-                        <div class="meta-text">High-fidelity Analog Studio Master, Tube-driven warmth, wide stereo field.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+    <div class="progress-bar-container">
+      <span id="time-current">0:00</span>
+      <input type="range" id="seek-slider" max="100" value="0">
+      <span id="time-total">3:05</span>
+    </div>
 
-    <footer>
-        <ul class="nav-links">
-            <li><a href="#catalog">Catalog</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#terms">Terms</a></li>
-        </ul>
-        <div class="producer-credit">Produced by Rene Carmona</div>
-    </footer>
+    <div class="player-controls">
+      <button class="btn-ctrl" id="btn-rewind" title="Rewind 10s"><i class="fa-solid fa-backward-step"></i></button>
+      <button class="btn-ctrl btn-play" id="btn-play-pause" title="Play/Pause"><i class="fa-solid fa-play"></i></button>
+      <button class="btn-ctrl" id="btn-forward" title="Forward 10s"><i class="fa-solid fa-forward-step"></i></button>
+    </div>
 
-    <script>
-        const playBtn = document.getElementById('playBtn');
-        let isPlaying = true;
+    <div class="engagement-bar">
+      <button class="btn-engage" id="btn-heart" title="Love Track">
+        <i class="fa-solid fa-heart"></i>
+        <span class="count" id="count-heart">128</span>
+      </button>
 
-        playBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                playBtn.textContent = '▶';
-                isPlaying = false;
-            } else {
-                playBtn.textContent = '❚❚';
-                isPlaying = true;
-            }
-        });
-    </script>
+      <button class="btn-engage" id="btn-like" title="Like Track">
+        <i class="fa-solid fa-thumbs-up"></i>
+        <span class="count" id="count-like">254</span>
+      </button>
+
+      <button class="btn-engage" id="btn-comment-toggle" title="Listener Comments">
+        <i class="fa-solid fa-comment-dots"></i>
+        <span class="count" id="count-comment">18</span>
+      </button>
+
+      <button class="btn-engage" id="btn-playlist" title="Add to Session Playlist">
+        <i class="fa-solid fa-square-plus"></i>
+        <span>Queue</span>
+      </button>
+    </div>
+
+    <div class="comment-drawer hidden" id="comment-drawer">
+      <div class="comment-header">
+        <h3>Listener Reactions & Feedback</h3>
+        <button id="btn-close-comments">&times;</button>
+      </div>
+      <div class="comment-feed" id="comment-feed">
+        <div class="comment-item"><strong>StudioFan:</strong> That tube warmth on the intro is unbelievable!</div>
+        <div class="comment-item"><strong>CholoSoul:</strong> Pure classic vibes. Outstanding master.</div>
+      </div>
+      <form id="comment-form" class="comment-form">
+        <input type="text" id="comment-input" placeholder="Leave a feedback message..." required maxlength="200">
+        <button type="submit">Post</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="station-footer">
+    <div class="footer-links">
+      <a href="#" id="link-catalog">Catalog</a>
+      <a href="#" id="link-about">About</a>
+      <a href="#" id="link-terms">Terms & Conditions</a>
+      <a href="#" id="link-privacy">Privacy Policy</a>
+    </div>
+    <p class="copyright">© Gless Street Radio • Produced by Rene Carmona. All Rights Reserved.</p>
+  </footer>
+
+  <div class="modal-overlay hidden" id="legal-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="btn-close-modal">&times;</button>
+      <div class="modal-body" id="modal-text">
+        <h2>Gless Street Radio — Terms of Service</h2>
+        <p><strong>Section 14: Interactive Features, Reactions, and User-Generated Content</strong></p>
+        <p><em>(a) Engagement Metrics:</em> Likes, hearts, and playlist additions are automated, non-monetized user engagement indicators. They grant no rights, royalties, or commercial claims to uploaders, listeners, or third parties.</p>
+        <p><em>(b) Listener Comments & Submissions:</em> By submitting comments, feedback, or text reactions through the platform interface, users grant Gless Street Radio a perpetual, royalty-free, royalty-exempt, worldwide license to display such content. Users warrant that submitted text is non-defamatory, lawful, and original. Gless Street Radio assumes zero liability for user-submitted text and reserves absolute discretion to delete, edit, or remove any comment at any time without notice.</p>
+        <p><em>(c) Local Playlist Caching:</em> The "Add to Playlist" function is strictly a temporary, non-transferable local session caching tool for personal, non-commercial playback within the platform interface. Redistribution, extraction, or permanent copying of stream assets is strictly prohibited and constitutes a material breach of these Terms.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
