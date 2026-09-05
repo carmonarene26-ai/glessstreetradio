@@ -5,16 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gless Street Radio | High-Fidelity Analog Studio Master</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
+  <!-- HEADER -->
   <header class="station-header">
     <h1>GLESS STREET RADIO</h1>
     <p class="tagline">High-Fidelity Analog Sound • Tube-Driven Warmth</p>
   </header>
 
+  <!-- 3-CARD VISUAL DECK -->
   <main class="deck-container">
+    <!-- Left Window: Previous Track -->
     <div class="card card-side" id="card-prev">
       <span class="card-label">PREVIOUS TRACK</span>
       <img src="https://via.placeholder.com/300" alt="Previous Track Art" id="img-prev">
@@ -22,6 +26,7 @@
       <p id="artist-prev">Produced by Rene Carmona</p>
     </div>
 
+    <!-- Center Window: Main Track -->
     <div class="card card-center" id="card-main">
       <span class="card-label live-badge"><i class="fa-solid fa-circle"></i> NOW PLAYING</span>
       <img src="https://via.placeholder.com/400" alt="Current Track Art" id="img-main">
@@ -30,6 +35,7 @@
       <div class="sound-spec">4K Analog Master • Tube Warmth • 3:05</div>
     </div>
 
+    <!-- Right Window: Upcoming Track -->
     <div class="card card-side" id="card-next">
       <span class="card-label">UPCOMING NEXT</span>
       <img src="https://via.placeholder.com/300" alt="Upcoming Track Art" id="img-next">
@@ -38,6 +44,7 @@
     </div>
   </main>
 
+  <!-- PLAYER INTERFACE & CONTROLS -->
   <section class="player-container">
     <div class="track-meta">
       <span id="player-track-title">Always the One</span>
@@ -45,48 +52,55 @@
       <span id="player-track-credit">Produced by Rene Carmona</span>
     </div>
 
+    <!-- Audio Progress Bar -->
     <div class="progress-bar-container">
       <span id="time-current">0:00</span>
       <input type="range" id="seek-slider" max="100" value="0">
       <span id="time-total">3:05</span>
     </div>
 
+    <!-- Playback Controls -->
     <div class="player-controls">
       <button class="btn-ctrl" id="btn-rewind" title="Rewind 10s"><i class="fa-solid fa-backward-step"></i></button>
       <button class="btn-ctrl btn-play" id="btn-play-pause" title="Play/Pause"><i class="fa-solid fa-play"></i></button>
       <button class="btn-ctrl" id="btn-forward" title="Forward 10s"><i class="fa-solid fa-forward-step"></i></button>
     </div>
 
+    <!-- ENGAGEMENT & SOCIAL BAR -->
     <div class="engagement-bar">
+      <!-- Heart Button -->
       <button class="btn-engage" id="btn-heart" title="Love Track">
         <i class="fa-solid fa-heart"></i>
-        <span class="count" id="count-heart">128</span>
+        <span class="count" id="count-heart">0</span>
       </button>
 
+      <!-- Thumbs Up Button -->
       <button class="btn-engage" id="btn-like" title="Like Track">
         <i class="fa-solid fa-thumbs-up"></i>
-        <span class="count" id="count-like">254</span>
+        <span class="count" id="count-like">0</span>
       </button>
 
+      <!-- Speech Bubble / Comment Button -->
       <button class="btn-engage" id="btn-comment-toggle" title="Listener Comments">
         <i class="fa-solid fa-comment-dots"></i>
-        <span class="count" id="count-comment">18</span>
+        <span class="count" id="count-comment">0</span>
       </button>
 
+      <!-- Add to Playlist Button -->
       <button class="btn-engage" id="btn-playlist" title="Add to Session Playlist">
         <i class="fa-solid fa-square-plus"></i>
         <span>Queue</span>
       </button>
     </div>
 
+    <!-- COLLAPSIBLE COMMENT DRAWER -->
     <div class="comment-drawer hidden" id="comment-drawer">
       <div class="comment-header">
         <h3>Listener Reactions & Feedback</h3>
         <button id="btn-close-comments">&times;</button>
       </div>
       <div class="comment-feed" id="comment-feed">
-        <div class="comment-item"><strong>StudioFan:</strong> That tube warmth on the intro is unbelievable!</div>
-        <div class="comment-item"><strong>CholoSoul:</strong> Pure classic vibes. Outstanding master.</div>
+        <!-- Live comments posted by listeners appear here -->
       </div>
       <form id="comment-form" class="comment-form">
         <input type="text" id="comment-input" placeholder="Leave a feedback message..." required maxlength="200">
@@ -95,6 +109,7 @@
     </div>
   </section>
 
+  <!-- FOOTER & LEGAL NAVIGATION -->
   <footer class="station-footer">
     <div class="footer-links">
       <a href="#" id="link-catalog">Catalog</a>
@@ -105,6 +120,7 @@
     <p class="copyright">© Gless Street Radio • Produced by Rene Carmona. All Rights Reserved.</p>
   </footer>
 
+  <!-- BULLETPROOF LEGAL MODAL (HIDDEN POPUP) -->
   <div class="modal-overlay hidden" id="legal-modal">
     <div class="modal-content">
       <button class="modal-close" id="btn-close-modal">&times;</button>
